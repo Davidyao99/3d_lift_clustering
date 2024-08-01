@@ -12,6 +12,7 @@ Inputs to our algorithm are camera poses, camera intrinsics, color frames, depth
 
 During preprocessing, we want to generate accurate and temporally consistent 2D segmentations of objects present in the video. We utilize Recognize-Anything Model to obtain semantic labels for prominent object in each frame. These labels are fed to Grounding-DINO to generate bounding boxes, which can be used to prompt Segment-Anything for fine grained segmentation. In order to improve temporal consistency, we use DEVA to obtain segmentation tracklets for each object. We now have segmentation tracklets for each prominent object in our video, along with its semantic labels (eg. chair, table).
 
+<div align="center">
 <table>
   <tr>
     <td style="text-align: center;">
@@ -56,10 +57,21 @@ During preprocessing, we want to generate accurate and temporally consistent 2D 
     </td>
   </tr>
 </table>
+</div>
 
 Our main clustering algorithm is the normalized graph cut algorithm found [here](https://people.eecs.berkeley.edu/~malik/papers/SM-ncut.pdf). The algorithm performs partitions on a graph, forming clusters of nodes with high-valued edges and separating nodes with low-valued edges. The normalization is due to the cluster value being formulated as a fraction of the total edges with the entire graph, as opposed to simply a sum of edge values within the cluster. Representing each point as a node in the graph is too computationally expensive. Therefore, a simpler but more efficient clustering is performed to cluster points based on similar geometric features to form super points. These super points will become the nodes of our graphs.
 
-![superpoints](https://github.com/user-attachments/assets/cc35e4d2-2080-4051-8dd5-9c4ade766e6e)
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="https://github.com/user-attachments/assets/cc35e4d2-2080-4051-8dd5-9c4ade766e6e" alt="Image 2" width="600" />
+        <br />
+        <span>Superpoints</span>
+      </td>
+    </tr>
+  </table>
+</div>
 
 
 # Preprocessing
