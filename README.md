@@ -102,8 +102,49 @@ git submodule update --init --recursive
 cd Tracking-Anything-with-DEVA
 ```
 
+***
+
+To download all necessary model weights:
+
+```
+mkdir saves
+bash scripts/download_models.sh
+```
+
+***
+
+To run Recognize-Anything Model, GroundingDINO and Segment-Anything Model:
+
+```
+python ram_gsam.py --ram_checkpoint ./saves/ram_swin_large_14m.pthunded_checkpoint --grounded_checkpoint ./saves/groundingdino_swint_ogc.pth   --sam_checkpoint ./saves/sam_vit_h_4b8939.pth
+```
+
+Visualization and results can be found under `./data/data_val_preprocessed/scans/<scan>/ram_gsam_window/`
+
+***
+
+To run Track-Anything-with-DEVA:
+
+```
+python evaluation/eval_with_detections.py
+```
+
+Visualization and results can be found under `./data/data_val_preprocessed/scans/<scan>/deva_ram_gsam_window/`
+
+# Clustering
+
+Various forms of graph edge can be used for the clustering by changing the parameter weights in `run_scannet.py`. For example, DINO and CLIP features can be extracted from the RGB frames and used as graph weights instead of the segmentation formulation. See argument descriptions in `run_scannet.py` for further details.
+
+```
+python run_scannet.py --base_dir ./data/data_val_preprocessed/scans
+```
+
+# visualization
+
+Use `visualize_laplacian.ipynb` to visualize the results.
+
+# Results
 
 
 
-## Data download and formatting
 
