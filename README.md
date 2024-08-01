@@ -81,6 +81,15 @@ To compute the weights of our graphs, we want to quantify the affinity between e
 
 V_pi and V_pj is the fraction of points from each superpoint that is visible in our current frame. This can be compuated using the camera parameters and depth map. The overall affinity is simply a sum over every frame. The weights of the edges of our graph is simply this overall affinity weighted by the RBF kernel applied to the distance between the pair of superpoints. Normalized graph cut is performed on this graph to create the desired instance segmentations.
 
+# Setup
+
+This repository contains the conda environment.yml file for running our main algorithm. For preprocessing, separate environments are provided in the submodule Tracking-Anything-With-DEVA. These were tested with cuda 11.8.
+
+```
+conda env create --file=environments.yml
+
+```
+
 
 # Dataset
 
