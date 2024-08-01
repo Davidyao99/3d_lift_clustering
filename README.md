@@ -57,6 +57,10 @@ During preprocessing, we want to generate accurate and temporally consistent 2D 
   </tr>
 </table>
 
+Our main clustering algorithm is the normalized graph cut algorithm found [here](https://people.eecs.berkeley.edu/~malik/papers/SM-ncut.pdf). The algorithm performs partitions on a graph, forming clusters of nodes with high-valued edges and separating nodes with low-valued edges. The normalization is due to the cluster value being formulated as a fraction of the total edges with the entire graph, as opposed to simply a sum of edge values within the cluster. Representing each point as a node in the graph is too computationally expensive. Therefore, a simpler but more efficient clustering is performed to cluster points based on similar geometric features to form super points. These super points will become the nodes of our graphs.
+
+![superpoints](https://github.com/user-attachments/assets/cc35e4d2-2080-4051-8dd5-9c4ade766e6e)
+
 
 # Preprocessing
 
