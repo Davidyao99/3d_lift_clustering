@@ -1,4 +1,4 @@
-name: 4dtrack_py311
+name: 3d_lift
 channels:
   - conda-forge
   - defaults
