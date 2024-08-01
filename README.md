@@ -86,9 +86,12 @@ V_pi and V_pj is the fraction of points from each superpoint that is visible in 
 This repository contains the conda environment.yml file for running our main algorithm. For preprocessing, separate environments are provided in the submodule Tracking-Anything-With-DEVA. These were tested with cuda 11.8.
 
 ```
-conda env create --file=environments.yml
-
+conda env create --file=environments.yml                                                  # for main algorithm
+conda env create --file=./Tracking-Anything-with-DEVA/environment_ram_gsam.yaml           # for ram_gsam.py
+conda env create --file=./Tracking-Anything-with-DEVA/environment_deva.yaml               # for DEVA
 ```
+
+If the conda environment for preprocessing fails, you can follow the respective repositories [here](https://github.com/IDEA-Research/Grounded-Segment-Anything.git) and [here](https://github.com/hkchengrex/Tracking-Anything-with-DEVA.git) to set up the environment instead.
 
 
 # Dataset
