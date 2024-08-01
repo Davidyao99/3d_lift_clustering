@@ -79,19 +79,31 @@ To compute the weights of our graphs, we want to quantify the affinity between e
   <img src="https://github.com/user-attachments/assets/4a654ad1-9be5-4a74-86b5-e3cff3c8f4e9" alt="Image 2" width="370" />
 </p>
 
-The overall affinity is simply a sum over every frame. The weights of the edges of our graph is simply this affinity weighted by the RBF kernel applied to the distance between the pair of superpoints. Normalized graph cut is performed on this graph to create the desired instance segmentations.
+V_pi and V_pj is the fraction of points from each superpoint that is visible in our current frame. This can be compuated using the camera parameters and depth map. The overall affinity is simply a sum over every frame. The weights of the edges of our graph is simply this overall affinity weighted by the RBF kernel applied to the distance between the pair of superpoints. Normalized graph cut is performed on this graph to create the desired instance segmentations.
 
+
+# Dataset
+
+We will be using the scannet200 dataset. Scripts are located in `./data` folder. Selected scans to be downloaded and processed are written as a line-separated text file in `./data/scannetv2_val.txt`
+
+```
+cd data
+bash download.sh                         # Downloads scannet data files into ./data_val/scans
+bash extract.sh                          # Extracts RGB, Depth, Extrinsics and intrinsics from raw scannet data files
+python ovir_preprocess.py                # Aligns rgb with depth, and copies the essential data files to ./data_val_preprocessed/scans
+```
 
 # Preprocessing
 
-Preprocessing is performed in the submodule `Tracking-Anything-with-DEVA`. Remember to initialize it with the following command:
+Preprocessing is performed in the submodule `Tracking-Anything-with-DEVA` which is a fork of the original repository. Remember to initialize it with the following command:
 
 ```
 git submodule update --init --recursive
+cd Tracking-Anything-with-DEVA
 ```
 
-##
 
-```
 
-```
+
+## Data download and formatting
+
