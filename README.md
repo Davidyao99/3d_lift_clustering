@@ -73,6 +73,14 @@ Our main clustering algorithm is the normalized graph cut algorithm found [here]
   </table>
 </div>
 
+To compute the weights of our graphs, we want to quantify the affinity between each pair of superpoints using our preprocessed segmentations. For superpoint P_i at frame f, we can represent its features as a histogram, h_i. The bins of each histogram correspond to a segmentation tracklet, with its value being the number of points from P_i that reprojects into that segmentation. To compute the affinity between 2 superpoints P_i and P_j at a single frame, we use the following equation:
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4a654ad1-9be5-4a74-86b5-e3cff3c8f4e9" alt="Image 2" width="370" />
+</p>
+
+The overall affinity is simply a sum over every frame. The weights of the edges of our graph is simply this affinity weighted by the RBF kernel applied to the distance between the pair of superpoints. Normalized graph cut is performed on this graph to create the desired instance segmentations.
+
 
 # Preprocessing
 
