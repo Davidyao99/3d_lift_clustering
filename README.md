@@ -5,7 +5,8 @@
   <img src="https://github.com/user-attachments/assets/520e3837-7d91-4983-9c60-78db145080b1" alt="Image 1" width="310" />
 </p>
 
-Given the latest advancements in 2D foundation models such as DINO, CLIP, SAM, can they be used to assist 3D tasks? This exploratory project aims to leverage 2D foundation models in the task of point cloud instance segmentation. Given posed RGB-D images along with a scene point cloud, our aim is to segment points that correspond to object instances. Various 2D features can be extracted using 2D foundation models and fused with point clouds using camera projection. Normalized graph cut is used to cluster points that have high affinity, and separate clusters with low affinity. Qualitative and Quantitative results show the application of 2D foundation models for 3D tasks is a promising future direction.
+Given the latest advancements in 2D foundation models such as DINO, CLIP, SAM, can they be used to assist 3D tasks? This exploratory project aims to leverage 2D foundation models in the task of point cloud instance segmentation. Given posed RGB-D images along with a scene point cloud, our aim is to segment points that correspond to object instances. Various 2D features can be extracted using 2D foundation models and fused with point clouds using camera projection. Normalized graph cut is used to cluster points that have high affinity, and separate clusters with low affinity. Qualitative results show the application of 2D foundation models for 3D tasks is a promising future direction.
+
 # Pipeline
 
 Inputs to our algorithm are camera poses, camera intrinsics, color frames, depth frames, and scene point clouds. 
@@ -102,6 +103,7 @@ We will be using the scannet200 dataset. Scripts are located in `./data` folder.
 cd data
 bash download.sh                         # Downloads scannet data files into ./data_val/scans
 bash extract.sh                          # Extracts RGB, Depth, Extrinsics and intrinsics from raw scannet data files
+python gen_scannet_instance_gt.py        # Export instance groundtruths
 python ovir_preprocess.py                # Aligns rgb with depth, and copies the essential data files to ./data_val_preprocessed/scans
 ```
 
@@ -155,7 +157,9 @@ python run_scannet.py --base_dir ./data/data_val_preprocessed/scans
 
 Use `visualize_laplacian.ipynb` to visualize the results.
 
-# Results
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/149de0ec-912c-4c77-9dad-58b9b8c3ec5e" alt="Image 2" width="370" />
+</p>
 
 
 
