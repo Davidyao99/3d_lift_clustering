@@ -8,6 +8,50 @@ Inputs to our algorithm are camera poses, camera intrinsics, color frames, depth
 
 During preprocessing, we want to generate accurate and temporally consistent 2D segmentations of objects present in the video. We utilize Recognize-Anything Model to obtain semantic labels for prominent object in each frame. These labels are fed to Grounding-DINO to generate bounding boxes, which can be used to prompt Segment-Anything for fine grained segmentation. In order to improve temporal consistency, we use DEVA to obtain segmentation tracklets for each object. We now have segmentation tracklets for each prominent object in our video, along with its semantic labels (eg. chair, table).
 
+<table>
+  <tr>
+    <td style="text-align: center;">
+      <img src="https://github.com/user-attachments/assets/ebda8c30-7e07-441c-9322-b232722d43eb" alt="Image 1" width="200" />
+      <div>Caption 1</div>
+    </td>
+    <td style="text-align: center;">
+      <img src="https://github.com/user-attachments/assets/c8119eb7-23b7-4ed7-8398-7405fcc3f9e8" alt="Image 2" width="200" />
+      <div>Caption 2</div>
+    </td>
+    <td style="text-align: center;">
+      <img src="https://github.com/user-attachments/assets/b05c3ccf-c7c5-42f1-82d1-2e53058c07a3" alt="Image 3" width="200" />
+      <div>Caption 3</div>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+      <img src="https://github.com/user-attachments/assets/b13cbdd8-725d-4b63-83ae-265070650404" alt="Image 4" width="200" />
+      <div>Frame 26 (RAM + GDINO + SAM)</div>
+    </td>
+    <td style="text-align: center;">
+      <img src="https://github.com/user-attachments/assets/38d1f4f6-192f-4f81-b03f-410898223c6b" alt="Image 5" width="200" />
+      <div>Frame 27 (RAM + GDINO + SAM)</div>
+    </td>
+    <td style="text-align: center;">
+      <img src="https://github.com/user-attachments/assets/5c71978d-fdfb-480a-994a-bae9afcf2d6f" alt="Image 6" width="200" />
+      <div>Frame 28 (RAM + GDINO + SAM)</div>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+      <img src="https://github.com/user-attachments/assets/bf150492-5f8f-46e2-9fbf-0364acbd7d79" alt="Image 7" width="200" />
+      <div>Caption 7</div>
+    </td>
+    <td style="text-align: center;">
+      <img src="https://github.com/user-attachments/assets/1aea1290-b3ea-4829-9916-e2ccc1b2c1ce" alt="Image 8" width="200" />
+      <div>Caption 8</div>
+    </td>
+    <td style="text-align: center;">
+      <img src="https://github.com/user-attachments/assets/0fabd7b7-f735-4814-8611-eb3e23ee5be2" alt="Image 9" width="200" />
+      <div>Caption 9</div>
+    </td>
+  </tr>
+</table>
 
 
 # Preprocessing
